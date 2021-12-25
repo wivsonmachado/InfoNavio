@@ -19,10 +19,20 @@ class NavioInfos {
 }
 const btn = document.getElementById('btn');
 btn.addEventListener('click', () => {
-    const newVessel = new NavioInfos(navio.value, Number(imo.value), bandeira.value, armador.value);
-    newVessel.createRowTable();
-    navio.value = '';
-    imo.value = '';
-    bandeira.value = '';
-    armador.value = '';
+    if (navio.value == '' || imo.value == '' || bandeira.value == '' || armador.value == '') {
+        alert('Preencha todos os campos');
+    }
+    else {
+        if (isNaN(Number(imo.value))) {
+            alert("IMO precisa ser um número");
+        }
+        else {
+            const newVessel = new NavioInfos(navio.value, Number(imo.value), bandeira.value, armador.value);
+            newVessel.createRowTable();
+            navio.value = '';
+            imo.value = '';
+            bandeira.value = '';
+            armador.value = '';
+        }
+    }
 });
